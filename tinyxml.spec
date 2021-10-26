@@ -1,6 +1,6 @@
 Name:           tinyxml
 Version:        2.6.2
-Release:        19
+Release:        20
 Summary:        C++ XML parser
 License:        zlib
 URL:            http://www.grinninglizard.com/tinyxml/
@@ -63,5 +63,8 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_libdir}/*.so
 
 %changelog
+* Tue Oct 26 2021 chenchen <chen_aka_jan@163.com> - 2.6.2-20
+- change the spec file name to be the same as the repo name
+
 * Tue Feb 18 2020 Senlin Xia <xiasenlin1@huawei.com> - 2.6.2-19
 - Package init
