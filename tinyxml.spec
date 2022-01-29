@@ -1,11 +1,11 @@
 Name:           tinyxml
 Version:        2.6.2
-Release:        21
+Release:        22
 Summary:        C++ XML parser
 License:        zlib
 URL:            http://www.grinninglizard.com/tinyxml/
 Source0:        http://downloads.sourceforge.net/tinyxml/tinyxml_2_6_2.tar.gz
-Patch0:         0001-In-stamp-always-advance-the-pointer-if-p-0xef.patch
+Patch0001:      CVE-2021-42260.patch
 BuildRequires:  gcc-c++
 
 %description
@@ -64,6 +64,9 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_libdir}/*.so
 
 %changelog
+* Thu Jan 27 2022 yaoxin <yaoxin30@huawei.com> - 2.6.2-22
+- Change the patch name to CVE-2021-42260.patch.
+
 * Mon Nov  1 2021 Zhiyi Weng <zhiyi@iscas.ac.cn> - 2.6.2-21
 - Fix CVE-2021-42260
 
