@@ -1,6 +1,6 @@
 Name:           tinyxml
 Version:        2.6.2
-Release:        22
+Release:        23
 Summary:        C++ XML parser
 License:        zlib
 URL:            http://www.grinninglizard.com/tinyxml/
@@ -28,11 +28,11 @@ It provides header files and libraries for tinyxml.
 touch tinyxml.h
 
 %build
-g++ $RPM_OPT_FLAGS -fPIC -o tinyxml.cpp.o -c tinyxml.cpp
-g++ $RPM_OPT_FLAGS -fPIC -o tinystr.cpp.o -c tinystr.cpp
-g++ $RPM_OPT_FLAGS -fPIC -o tinyxmlerror.cpp.o -c tinyxmlerror.cpp
-g++ $RPM_OPT_FLAGS -fPIC -o tinyxmlparser.cpp.o -c tinyxmlparser.cpp
-g++ $RPM_LD_FLAGS -shared -o libtinyxml.so.0.%{version} -Wl,-soname,libtinyxml.so.0 *.cpp.o
+for i in tinyxml.cpp tinystr.cpp tinyxmlerror.cpp tinyxmlparser.cpp; do
+  ${CXX} $RPM_OPT_FLAGS -fPIC -o $i.o -c $i
+done
+${CXX} $RPM_LD_FLAGS -shared -o lib%{name}.so.0.%{version} \
+   -Wl,-soname,lib%{name}.so.0 *.cpp.o
 
 
 %install
@@ -64,6 +64,9 @@ mkdir -p %{buildroot}%{_libdir}/pkgconfig
 %{_libdir}/*.so
 
 %changelog
+* Tue Apr 18 2023 Xiaoya Huang <huangxiaoya@iscas.ac.cn> - 2.6.2-23
+- Support specify CC
+
 * Thu Jan 27 2022 yaoxin <yaoxin30@huawei.com> - 2.6.2-22
 - Change the patch name to CVE-2021-42260.patch.
 
